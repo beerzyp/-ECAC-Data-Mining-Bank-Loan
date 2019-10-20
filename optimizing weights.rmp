@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.4.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.4.001" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="9.4.001" expanded="true" height="68" name="Retrieve clean_train" width="90" x="45" y="34">
+        <parameter key="repository_entry" value="//ECAC/data_transformed/clean_train"/>
+      </operator>
+      <operator activated="true" class="subprocess" compatibility="9.4.001" expanded="true" height="82" name="Subprocess" width="90" x="246" y="34">
+        <process expanded="true">
+          <operator activated="true" class="select_attributes" compatibility="9.4.001" expanded="true" height="82" name="Select Attributes (2)" width="90" x="45" y="34">
+            <parameter key="attribute_filter_type" value="subset"/>
+            <parameter key="attribute" value=""/>
+            <parameter key="attributes" value="age_loan_owner|amount|average_balance_per_month_0_1|average_balance_per_month_1_2|average_balance_per_month_2_3|average_credit_per_month|average_credit_per_month_0_1|average_credit_per_month_2_3|average_withdrawal_per_month_0_1|debts_to_income_ratio_after_loan|debts_to_income_ratio_before_loan|difference_credit_withdrawal|difference_credit_withdrawal_0_1|difference_credit_withdrawal_1_2|difference_credit_withdrawal_2_3|district_name|duration|estimated_balance_end_loan|gender|household_debt|insurance_debt|last_balance|loan_id|maximum_balance_0_1|maximum_balance_1_2|maximum_balance_2_3|maximum_credit|maximum_credit_0_1|maximum_credit_1_2|maximum_credit_2_3|maximum_withdrawal|maximum_withdrawal_0_1|maximum_withdrawal_1_2|maximum_withdrawal_2_3|minimum_credit|minimum_credit_0_1|minimum_credit_1_2|minimum_credit_2_3|minimum_withdrawal|minimum_withdrawal_0_1|minimum_withdrawal_1_2|minimum_withdrawal_2_3|mininum_balance|mininum_balance_0_1|mininum_balance_1_2|mininum_balance_2_3|no. of cities |no. of enterpreneurs per 1000 inhabitants |no. of inhabitants|no. of municipalities with inhabitants 500-1999|no. of municipalities with inhabitants 2000-9999 |no. of municipalities with inhabitants &lt; 499 |no. of municipalities with inhabitants &gt;10000 |numClients|other_debts|outlier|payments|percentage_loan_entry|percentage_payments_credit_withdrawal|ratio of urban inhabitants |region|standard_deviation_credit_0_1|standard_deviation_withdrawal_0_1|status|total_debt_before_loan|unemploymant_rate|variance_credit_0_1|variance_credit_2_3|variance_withdrawal|variance_withdrawal_0_1|variance_withdrawal_1_2"/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="attribute_value"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="time"/>
+            <parameter key="block_type" value="attribute_block"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="value_matrix_row_start"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="false"/>
+          </operator>
+          <operator activated="true" class="numerical_to_polynominal" compatibility="9.4.001" expanded="true" height="82" name="Numerical to Polynominal" width="90" x="179" y="34">
+            <parameter key="attribute_filter_type" value="single"/>
+            <parameter key="attribute" value="status"/>
+            <parameter key="attributes" value=""/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="numeric"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="real"/>
+            <parameter key="block_type" value="value_series"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="value_series_end"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="true"/>
+          </operator>
+          <operator activated="true" class="nominal_to_binominal" compatibility="9.4.001" expanded="true" height="103" name="Nominal to Binominal" width="90" x="313" y="34">
+            <parameter key="return_preprocessing_model" value="false"/>
+            <parameter key="create_view" value="false"/>
+            <parameter key="attribute_filter_type" value="single"/>
+            <parameter key="attribute" value="status"/>
+            <parameter key="attributes" value=""/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="nominal"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="file_path"/>
+            <parameter key="block_type" value="single_value"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="single_value"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="true"/>
+            <parameter key="transform_binominal" value="false"/>
+            <parameter key="use_underscore_in_name" value="false"/>
+          </operator>
+          <operator activated="true" class="set_role" compatibility="9.4.001" expanded="true" height="82" name="Set Role (2)" width="90" x="447" y="34">
+            <parameter key="attribute_name" value="status"/>
+            <parameter key="target_role" value="label"/>
+            <list key="set_additional_roles"/>
+          </operator>
+          <operator activated="true" class="replace_missing_values" compatibility="9.4.001" expanded="true" height="103" name="Replace Missing Values" width="90" x="648" y="34">
+            <parameter key="return_preprocessing_model" value="false"/>
+            <parameter key="create_view" value="false"/>
+            <parameter key="attribute_filter_type" value="all"/>
+            <parameter key="attribute" value=""/>
+            <parameter key="attributes" value=""/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="attribute_value"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="time"/>
+            <parameter key="block_type" value="attribute_block"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="value_matrix_row_start"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="false"/>
+            <parameter key="default" value="zero"/>
+            <list key="columns"/>
+          </operator>
+          <connect from_port="in 1" to_op="Select Attributes (2)" to_port="example set input"/>
+          <connect from_op="Select Attributes (2)" from_port="example set output" to_op="Numerical to Polynominal" to_port="example set input"/>
+          <connect from_op="Numerical to Polynominal" from_port="example set output" to_op="Nominal to Binominal" to_port="example set input"/>
+          <connect from_op="Nominal to Binominal" from_port="example set output" to_op="Set Role (2)" to_port="example set input"/>
+          <connect from_op="Set Role (2)" from_port="example set output" to_op="Replace Missing Values" to_port="example set input"/>
+          <connect from_op="Replace Missing Values" from_port="example set output" to_port="out 1"/>
+          <portSpacing port="source_in 1" spacing="0"/>
+          <portSpacing port="source_in 2" spacing="0"/>
+          <portSpacing port="sink_out 1" spacing="0"/>
+          <portSpacing port="sink_out 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="weight_by_information_gain_ratio" compatibility="9.4.001" expanded="true" height="82" name="Weight by Information Gain Ratio" width="90" x="380" y="34">
+        <parameter key="normalize_weights" value="false"/>
+        <parameter key="sort_weights" value="true"/>
+        <parameter key="sort_direction" value="ascending"/>
+      </operator>
+      <operator activated="true" class="optimize_weights_evolutionary" compatibility="9.4.001" expanded="true" height="103" name="Optimize Weights (Evolutionary)" width="90" x="514" y="34">
+        <parameter key="population_size" value="5"/>
+        <parameter key="maximum_number_of_generations" value="30"/>
+        <parameter key="use_early_stopping" value="false"/>
+        <parameter key="generations_without_improval" value="2"/>
+        <parameter key="normalize_weights" value="true"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <parameter key="user_result_individual_selection" value="false"/>
+        <parameter key="show_population_plotter" value="false"/>
+        <parameter key="plot_generations" value="10"/>
+        <parameter key="constraint_draw_range" value="false"/>
+        <parameter key="draw_dominated_points" value="true"/>
+        <parameter key="maximal_fitness" value="Infinity"/>
+        <parameter key="selection_scheme" value="tournament"/>
+        <parameter key="tournament_size" value="0.25"/>
+        <parameter key="start_temperature" value="1.0"/>
+        <parameter key="dynamic_selection_pressure" value="true"/>
+        <parameter key="keep_best_individual" value="false"/>
+        <parameter key="save_intermediate_weights" value="false"/>
+        <parameter key="intermediate_weights_generations" value="10"/>
+        <parameter key="mutation_variance" value="1.0"/>
+        <parameter key="1_5_rule" value="true"/>
+        <parameter key="bounded_mutation" value="false"/>
+        <parameter key="p_crossover" value="0.0"/>
+        <parameter key="crossover_type" value="uniform"/>
+        <parameter key="use_default_mutation_rate" value="true"/>
+        <parameter key="initialize_with_input_weights" value="false"/>
+        <process expanded="true">
+          <portSpacing port="source_example set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_performance" spacing="0"/>
+        </process>
+      </operator>
+      <connect from_op="Retrieve clean_train" from_port="output" to_op="Subprocess" to_port="in 1"/>
+      <connect from_op="Subprocess" from_port="out 1" to_op="Weight by Information Gain Ratio" to_port="example set"/>
+      <connect from_op="Weight by Information Gain Ratio" from_port="weights" to_op="Optimize Weights (Evolutionary)" to_port="attribute weights in"/>
+      <connect from_op="Weight by Information Gain Ratio" from_port="example set" to_op="Optimize Weights (Evolutionary)" to_port="example set in"/>
+      <connect from_op="Optimize Weights (Evolutionary)" from_port="example set out" to_port="result 1"/>
+      <connect from_op="Optimize Weights (Evolutionary)" from_port="performance" to_port="result 2"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>
