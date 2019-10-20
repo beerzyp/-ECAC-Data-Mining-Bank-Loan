@@ -1,8 +1,8 @@
 # ECAC---To-loan-or-not-to-loan-19-20
 # T2-G09 JustDontLoan #
-Bernardo Manuel Faria Ramos
-Pedro José Lourenço Azevedo
-Data mining predictive analysis of bank loans
+Bernardo Manuel Faria Ramos \n
+Pedro José Lourenço Azevedo \n
+Data mining predictive analysis of bank loans 
 ## Kaggle Score ## 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/KrMrqMX/Sem-T-tulo.png" alt="Sem-T-tulo" border="0"></a>
 ## Predictive Anaylsis ##
