@@ -5,7 +5,7 @@ Pedro José Lourenço Azevedo
 
 Data mining predictive analysis of bank loans 
 ## Kaggle Score ## 
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/KrMrqMX/Sem-T-tulo.png" alt="Sem-T-tulo" border="0"></a>
+<a href="https://ibb.co/K5pThsn"><img src="https://i.ibb.co/MgxFS1d/kagglefinal.png" alt="kagglefinal" border="0"></a>
 ## Predictive Anaylsis ##
 <a href="https://ibb.co/fdbPF6H"><img src="https://i.ibb.co/F49j3Zz/Slide1.jpg" alt="Slide1" border="0"></a>
 <a href="https://ibb.co/JrNtVtL"><img src="https://i.ibb.co/DwNWhWX/Slide2.jpg" alt="Slide2" border="0"></a>
